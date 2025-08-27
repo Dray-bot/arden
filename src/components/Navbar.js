@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Allura } from 'next/font/google'
 import { CartContext } from '@/context/CartContext'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 const allura = Allura({ subsets: ['latin'], weight: '400' })
 
@@ -17,7 +17,6 @@ export default function Navbar() {
   const [cartBounce, setCartBounce] = useState(false)
   const prevCartCount = useRef(cartItems)
   const pathname = usePathname()
-  const router = useRouter()
 
   useEffect(() => {
     if (cartItems > prevCartCount.current) {
@@ -33,7 +32,21 @@ export default function Navbar() {
     setMenuOpen(false)
   }, [pathname])
 
-  const navLinks = ['Home', 'Shop', 'About']
+  const navLinks = ['Home', 'Shop', 'About', 'Cart']
+
+  // animation variants for mobile links
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  }
+
+  const item = {
+    hidden: { x: -50, opacity: 0 },
+    show: { x: 0, opacity: 1, transition: { type: 'spring', stiffness: 300 } }
+  }
 
   return (
     <nav className="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 transition-all duration-300">
@@ -46,7 +59,7 @@ export default function Navbar() {
 
         {/* Desktop Links */}
         <div className="hidden md:flex space-x-6 items-center text-black text-base font-light">
-          {navLinks.map(item => (
+          {navLinks.slice(0, 3).map(item => (
             <Link
               key={item}
               href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
@@ -97,15 +110,23 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="md:hidden bg-white text-black shadow-md overflow-hidden"
           >
-            {['Home', 'Shop', 'About', 'Cart'].map(item => (
-              <Link
-                key={item}
-                href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
-                className="block px-6 py-3 hover:bg-gray-100 transition-colors duration-200"
-              >
-                {item}
-              </Link>
-            ))}
+            <motion.div
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="flex flex-col"
+            >
+              {navLinks.map(item => (
+                <motion.div key={item} variants={item}>
+                  <Link
+                    href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
+                    className="block px-6 py-3 hover:bg-gray-100 transition-colors duration-200"
+                  >
+                    {item}
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
