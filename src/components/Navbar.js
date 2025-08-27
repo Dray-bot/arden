@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useContext, useRef } from 'react'
-import { FiShoppingCart, FiMenu, FiX } from 'react-icons/fi'
+import { FiShoppingCart } from 'react-icons/fi'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Allura } from 'next/font/google'
@@ -34,7 +34,6 @@ export default function Navbar() {
 
   const navLinks = ['Home', 'Shop', 'About', 'Cart']
 
-  // animation variants for mobile links
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -95,9 +94,34 @@ export default function Navbar() {
             )}
           </Link>
 
-          <button onClick={() => setMenuOpen(!menuOpen)} className="focus:outline-none">
-            {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </button>
+          {/* Custom toggle button */}
+          <motion.button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="flex flex-col items-start justify-center gap-1.5 w-8 h-8 relative focus:outline-none"
+            whileTap={{ scale: 0.9 }}
+          >
+            {/* Top line */}
+            <motion.span
+              className="block h-0.5 bg-black rounded-full"
+              style={{ width: "20px" }}
+              animate={menuOpen ? { rotate: 45, y: 6, width: "22px" } : { rotate: 0, y: 0, width: "20px" }}
+              transition={{ duration: 0.3 }}
+            />
+            {/* Middle line */}
+            <motion.span
+              className="block h-0.5 bg-black rounded-full"
+              style={{ width: "14px" }}
+              animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.2 }}
+            />
+            {/* Bottom line */}
+            <motion.span
+              className="block h-0.5 bg-black rounded-full"
+              style={{ width: "8px" }}
+              animate={menuOpen ? { rotate: -45, y: -6, width: "22px" } : { rotate: 0, y: 0, width: "8px" }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.button>
         </div>
       </div>
 
@@ -116,13 +140,13 @@ export default function Navbar() {
               animate="show"
               className="flex flex-col"
             >
-              {navLinks.map(item => (
-                <motion.div key={item} variants={item}>
+              {navLinks.map(link => (
+                <motion.div key={link} variants={item}>
                   <Link
-                    href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
+                    href={`/${link.toLowerCase() === 'home' ? '' : link.toLowerCase()}`}
                     className="block px-6 py-3 hover:bg-gray-100 transition-colors duration-200"
                   >
-                    {item}
+                    {link}
                   </Link>
                 </motion.div>
               ))}
@@ -133,3 +157,4 @@ export default function Navbar() {
     </nav>
   )
 }
+
