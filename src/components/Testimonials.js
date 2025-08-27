@@ -6,6 +6,7 @@ import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Allura } from 'next/font/google'
+import Image from 'next/image'
 
 const allura = Allura({ subsets: ['latin'], weight: '400' })
 
@@ -30,7 +31,6 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section className="py-20 bg-white px-6 md:px-12">
-      {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -53,12 +53,14 @@ export default function Testimonials() {
             className="bg-gray-50 p-8 rounded-2xl shadow-sm"
           >
             <div className="flex flex-col items-center">
-              <img
+              <Image
                 src={t.image}
                 alt={t.name}
-                className="w-20 h-20 rounded-full object-cover mb-4"
+                width={80}
+                height={80}
+                className="rounded-full object-cover mb-4"
               />
-              <p className="text-gray-700 italic text-center">"{t.text}"</p>
+              <p className="text-gray-700 italic text-center">&quot;{t.text}&quot;</p>
               <span className="mt-4 font-bold text-black">{t.name}</span>
             </div>
           </motion.div>
@@ -84,12 +86,14 @@ export default function Testimonials() {
                 className="bg-gray-50 p-8 rounded-2xl shadow-sm"
               >
                 <div className="flex flex-col items-center">
-                  <img
+                  <Image
                     src={t.image}
                     alt={t.name}
-                    className="w-20 h-20 rounded-full object-cover mb-4"
+                    width={80}
+                    height={80}
+                    className="rounded-full object-cover mb-4"
                   />
-                  <p className="text-gray-700 italic text-center">"{t.text}"</p>
+                  <p className="text-gray-700 italic text-center">&quot;{t.text}&quot;</p>
                   <span className="mt-4 font-bold text-black">{t.name}</span>
                 </div>
               </motion.div>
