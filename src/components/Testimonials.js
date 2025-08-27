@@ -6,6 +6,7 @@ import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Allura } from 'next/font/google'
+import Image from 'next/image'
 
 const allura = Allura({ subsets: ['latin'], weight: '400' })
 
@@ -13,24 +14,23 @@ const testimonials = [
   {
     name: 'Sophia M.',
     text: 'Arden pieces are timeless. I wear them everywhere and always feel confident.',
-    image: 'https://randomuser.me/api/portraits/women/44.jpg',
+    image: 'https://www.jacksonlewis.com/sites/default/files/styles/bio_mobile/public/2024-04/Czerniecki_Sophia_Philadelphia_2048x756_b.png.webp?itok=DhEWaQJi',
   },
   {
     name: 'James L.',
     text: 'Finally clothes that fit my style without screaming trends. Arden is different.',
-    image: 'https://randomuser.me/api/portraits/men/46.jpg',
+    image: 'https://www.hahnlaw.com/wp-content/uploads/2021/09/Holloway-square.png',
   },
   {
     name: 'Elena K.',
     text: 'The quality is unmatched. Every detail feels intentional.',
-    image: 'https://randomuser.me/api/portraits/women/68.jpg',
+    image: 'https://www.bravomodels.net/bravo_cms/wp-content/uploads/2021/08/2022-04-19-13.18.13.jpg',
   },
 ]
 
 export default function Testimonials() {
   return (
     <section className="py-20 bg-white px-6 md:px-12">
-      {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -53,12 +53,14 @@ export default function Testimonials() {
             className="bg-gray-50 p-8 rounded-2xl shadow-sm"
           >
             <div className="flex flex-col items-center">
-              <img
+              <Image
                 src={t.image}
                 alt={t.name}
-                className="w-20 h-20 rounded-full object-cover mb-4"
+                width={80}
+                height={80}
+                className="rounded-full object-cover mb-4"
               />
-              <p className="text-gray-700 italic text-center">"{t.text}"</p>
+              <p className="text-gray-700 italic text-center">&quot;{t.text}&quot;</p>
               <span className="mt-4 font-bold text-black">{t.name}</span>
             </div>
           </motion.div>
@@ -84,12 +86,14 @@ export default function Testimonials() {
                 className="bg-gray-50 p-8 rounded-2xl shadow-sm"
               >
                 <div className="flex flex-col items-center">
-                  <img
+                  <Image
                     src={t.image}
                     alt={t.name}
-                    className="w-20 h-20 rounded-full object-cover mb-4"
+                    width={80}
+                    height={80}
+                    className="rounded-full object-cover mb-4"
                   />
-                  <p className="text-gray-700 italic text-center">"{t.text}"</p>
+                  <p className="text-gray-700 italic text-center">&quot;{t.text}&quot;</p>
                   <span className="mt-4 font-bold text-black">{t.name}</span>
                 </div>
               </motion.div>

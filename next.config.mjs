@@ -41,7 +41,10 @@ const nextConfig = {
       'cdnimg.brunomarc.com',
       'image.made-in-china.com',
       'www.theunstitchd.com',
-      'www.fashionbeans.com'
+      'www.fashionbeans.com',
+      'www.jacksonlewis.com',
+      'www.hahnlaw.com',
+      'www.bravomodels.net'
     ],
   },
 }
