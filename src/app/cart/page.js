@@ -99,9 +99,9 @@ export default function CartPage() {
                       </button>
                       <button
                         onClick={() => removeFromCart(item.id)}
-                        className="ml-auto text-red-600 hover:text-red-800 flex items-center gap-1 font-semibold"
+                        className="ml-auto text-red-600 hover:text-red-800 flex items-center justify-center"
                       >
-                        <FiTrash2 size={18} /> Remove
+                        <FiTrash2 size={20} />
                       </button>
                     </div>
                   </div>
