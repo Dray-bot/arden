@@ -1,4 +1,49 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: [
+      'img01.ztat.net',
+      'calvinklein-eu.scene7.com',
+      'media.weekday.com',
+      'lscoglobal.scene7.com',
+      'images.bewakoof.com',
+      'media.boohoo.com',
+      'veirdo.in',
+      'thestreetsofseoul.com',
+      'lh6.googleusercontent.com',
+      'eu.cernucci.com',
+      'img.kwcdn.com',
+      'itsmilla.com',
+      'anninc.scene7.com',
+      'luckybrand.bynder.com',
+      'www.reddress.com',
+      'i.etsystatic.com',
+      'www.adjoaa.com',
+      'meshki.co.uk',
+      'cdn.media.amplience.net',
+      'assets.digitalcontent.marksandspencer.app',
+      'basicallybasic.in',
+      'www.monsoonlondon.com',
+      'xcdn.next.co.uk',
+      'cdn.shopify.com',
+      'm.media-amazon.com',
+      'www.mypersonalisedclothing.com',
+      'www.gapcanada.ca',
+      'down-ph.img.susercontent.com',
+      'www.demozastores.com',
+      'lemonieboutique.com',
+      'cottonon.com',
+      'contents.mediadecathlon.com',
+      'www.naturesupplyco.com', 
+      'www.apetogentleman.com',
+      'www.weatherproofvintage.com',
+      'cdnimg.brunomarc.com',
+      'image.made-in-china.com',
+      'www.theunstitchd.com',
+      'www.fashionbeans.com'
+    ],
+  },
+}
 
 export default nextConfig;
